@@ -13,11 +13,15 @@ namespace Pokemon
     {
         public string Name { get; }
         public int Power { get; }
+        public Elements Type { get; }
 
-        public Move(string name, int power)
+        public Move(string name, int power, Elements type)
         {
             this.Name = name;
             this.Power = power;
+            this.Type = type;
         }
+
+
     }
 }

@@ -17,13 +17,13 @@ namespace Pokemon
             List<Move> squirtMoves = new List<Move>();
             List<Move> bulbMoves = new List<Move>();
 
-            Move ember = new Move("Ember", 40);
-            Move fireBlast = new Move("Fire Blast", 110);
-            Move bubble = new Move("Bubble", 40);
-            Move bite = new Move("Bite", 60);
-            Move cut = new Move("Cut", 50);
-            Move megaDrain = new Move("Mega Drain", 40);
-            Move razorLeaf = new Move("Razor Leaf", 55);
+            Move ember = new Move("Ember", 40, Elements.Fire);
+            Move fireBlast = new Move("Fire Blast", 110, Elements.Fire);
+            Move bubble = new Move("Bubble", 40, Elements.Water);
+            Move bite = new Move("Bite", 60, Elements.Dark);
+            Move cut = new Move("Cut", 50, Elements.Normal);
+            Move megaDrain = new Move("Mega Drain", 40, Elements.Grass);
+            Move razorLeaf = new Move("Razor Leaf", 55, Elements.Grass);
 
             charMoves.Add(ember);
             charMoves.Add(fireBlast);
@@ -169,13 +169,14 @@ namespace Pokemon
 
 
                                 //GET USER ANSWER, BE SURE TO CHECK IF IT'S A VALID MOVE, OTHERWISE ASK AGAIN
-                                int damage = player.Attack(enemy, player.Moves[move].Power);
-
+                                int damage = player.Attack(enemy, player.Moves[move].Power, player.Moves[move].Type);
+                                
                                 Console.Clear();
                                 //CALCULATE AND APPLY DAMAGE
 
                                 //print the move and damage
                                 Console.WriteLine(player.Name + " uses " + player.Moves[move].Name + ". " + enemy.Name + " loses " + damage + " HP");
+                                player.IsEffective();
                                 //Console.WriteLine(" " + enemy.Name + " loses " + damage + " HP");
 
                                 //if the enemy is not dead yet, it attacks
@@ -191,10 +192,12 @@ namespace Pokemon
                                     Move enemyAttack = enemy.Moves[rand.Next(enemy.Moves.Count)];
 
 
-                                    int enemyDamage = enemy.Attack(player,enemyAttack.Power);
+                                    int enemyDamage = enemy.Attack(player,enemyAttack.Power, enemyAttack.Type);
 
                                     //print the move and damage
                                     Console.WriteLine(enemy.Name + " uses " + enemyAttack.Name + ". " + player.Name + " loses " + enemyDamage + " HP");
+                                    enemy.IsEffective();
+
                                 }
                                 fightStart = false;
                             }
