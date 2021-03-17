@@ -111,6 +111,7 @@ namespace Pokemon
 
             Console.WriteLine("Welcome to Jacob Davis's world of Pokemon: Adventures in C#!");
 
+            //Ascii art shamelessly stolen from https://www.asciiart.eu/video-games/pokemon
             Console.WriteLine("\n" + @"                                  ,'\" +
                 "\n" + @"    _.----.        ____         ,'  _\   ___    ___     ____" +
                 "\n" + @"_,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`." +
