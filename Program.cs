@@ -166,12 +166,12 @@ namespace Pokemon
                                 }
 
 
+                                Console.Clear();
 
 
                                 //GET USER ANSWER, BE SURE TO CHECK IF IT'S A VALID MOVE, OTHERWISE ASK AGAIN
                                 int damage = player.Attack(enemy, player.Moves[move].Power, player.Moves[move].Type);
                                 
-                                Console.Clear();
                                 //CALCULATE AND APPLY DAMAGE
 
                                 //print the move and damage

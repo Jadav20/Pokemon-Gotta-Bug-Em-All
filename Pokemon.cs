@@ -134,7 +134,7 @@ namespace Pokemon
         /// <param name="damage">The amount of pre elemental-effect damage</param>
         /// <param name="enemyType">The elemental type of the enemy</param>
         /// <returns>The damage post elemental-effect</returns>
-        public int CalculateElementalEffects(int damage, Elements moveType, Elements enemyType)
+        public int CalculateElementalEffects(int damage, Elements enemyType, Elements moveType)
         {
 
             modifier = 1;
@@ -179,12 +179,13 @@ namespace Pokemon
                 { 1, 2, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 2, 2, 1 }    //Fairy
             };
 
+
+            modifier = elementalTable[attackEffective[moveType],attackEffective[enemyType]];
+
             Console.WriteLine("Attack: " + moveType + " Defense: " + enemyType);
             Console.WriteLine("Attack: " + attackEffective[moveType] + " Defense: " + attackEffective[enemyType]);
             Console.WriteLine("Modifier: " + modifier);
-            modifier = elementalTable[attackEffective[moveType],attackEffective[enemyType]];
 
-            
             if (modifier == 1)
             {
                 return damage;
