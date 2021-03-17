@@ -103,9 +103,13 @@ namespace Pokemon
 
             //int damage = (CalculateElementalEffects(baseAttack, enemy.element) - enemy.CalculateDefence());
 
-            if (damage < 1)
+
+            //STAB (Same-type attack bonus) gets applied here
+            //https://bulbapedia.bulbagarden.net/wiki/Same-type_attack_bonus
+            if (element == moveType)
             {
-                Console.WriteLine();
+                damage = damage + (damage*2)/4;
+                Console.WriteLine("STAB is applied");
             }
 
             enemy.hp -= damage;
@@ -145,10 +149,13 @@ namespace Pokemon
             attackEffective.Add(Elements.Flying, 2);
             attackEffective.Add(Elements.Poison, 3);
             attackEffective.Add(Elements.Ground, 4);
-            attackEffective.Add(Elements.Steel, 5);
-            attackEffective.Add(Elements.Fire, 6);
-            attackEffective.Add(Elements.Water, 7);
-            attackEffective.Add(Elements.Grass, 8);
+            attackEffective.Add(Elements.Rock, 5);
+            attackEffective.Add(Elements.Bug, 6);
+            attackEffective.Add(Elements.Ghost, 7);
+            attackEffective.Add(Elements.Steel, 8);
+            attackEffective.Add(Elements.Fire, 9);
+            attackEffective.Add(Elements.Water, 10);
+            attackEffective.Add(Elements.Grass, 11);
             attackEffective.Add(Elements.Electric, 9);
             attackEffective.Add(Elements.Psychic, 10);
             attackEffective.Add(Elements.Ice, 11);

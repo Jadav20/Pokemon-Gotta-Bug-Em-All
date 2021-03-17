@@ -13,10 +13,7 @@ namespace Pokemon
 
             List<Pokemon> roster = new List<Pokemon>();
 
-            List<Move> charMoves = new List<Move>();
-            List<Move> squirtMoves = new List<Move>();
-            List<Move> bulbMoves = new List<Move>();
-
+            //Movelist
             Move ember = new Move("Ember", 40, Elements.Fire);
             Move fireBlast = new Move("Fire Blast", 110, Elements.Fire);
             Move bubble = new Move("Bubble", 40, Elements.Water);
@@ -24,25 +21,93 @@ namespace Pokemon
             Move cut = new Move("Cut", 50, Elements.Normal);
             Move megaDrain = new Move("Mega Drain", 40, Elements.Grass);
             Move razorLeaf = new Move("Razor Leaf", 55, Elements.Grass);
+            Move slam = new Move("Slam", 80, Elements.Normal);
+            Move hyperbeam = new Move("Hyper Beam", 150, Elements.Normal);
+            Move psychic = new Move("Psychic", 90, Elements.Psychic);
+            Move blizzard = new Move("Blizzard", 120, Elements.Ice);
+            Move thunderbolt = new Move("Thunder Bolt", 95, Elements.Electric);
+            Move lick = new Move("Lick", 20, Elements.Ghost);
+            Move explosion = new Move("Explosion", 170, Elements.Normal);
+            Move surf = new Move("Surf", 95, Elements.Water);
+            Move fly = new Move("Fly", 70, Elements.Flying);
+            Move earthquake = new Move("Earthquake", 100, Elements.Ground);
+            Move hydropump = new Move("Hydro Pump", 120, Elements.Water);
+            Move bodyslam = new Move("Body Slam", 85, Elements.Normal);
+            Move solarbeam = new Move("Solar Beam", 120, Elements.Grass);
 
+            // INITIALIZE YOUR THREE POKEMONS HERE
+            List<Move> charMoves = new List<Move>();
+            Pokemon charmander = new Pokemon("Charmander", 3, 52, 43, 39, Elements.Fire, charMoves);
+            roster.Add(charmander);
             charMoves.Add(ember);
             charMoves.Add(fireBlast);
 
+
+            List<Move> squirtMoves = new List<Move>();
+            Pokemon squirtle = new Pokemon("Squirtle", 2, 48, 65, 44, Elements.Water, squirtMoves);
+            roster.Add(squirtle);
             squirtMoves.Add(bubble);
             squirtMoves.Add(bite);
 
+            List<Move> bulbMoves = new List<Move>();
+            Pokemon bulbasaur = new Pokemon("Bulbasaur", 3, 49, 49, 45, Elements.Grass, bulbMoves);
+            roster.Add(bulbasaur);
             bulbMoves.Add(cut);
             bulbMoves.Add(megaDrain);
             bulbMoves.Add(razorLeaf);
 
-            // INITIALIZE YOUR THREE POKEMONS HERE
-            Pokemon charmander = new Pokemon("Charmander", 3, 52, 43, 39, Elements.Fire, charMoves);
-            Pokemon squirtle = new Pokemon("Squirtle", 2, 48, 65, 44, Elements.Water, squirtMoves);
-            Pokemon bulbasaur = new Pokemon("Bulbasaur", 3, 49, 49, 45, Elements.Grass, bulbMoves);
+            List<Move> chariMoves = new List<Move>();
+            Pokemon charizard = new Pokemon("Charizard", 50, 84, 78, 78, Elements.Fire, chariMoves);
+            roster.Add(charizard);
+            chariMoves.Add(fireBlast);
+            chariMoves.Add(fly);
+            chariMoves.Add(hyperbeam);
+            chariMoves.Add(earthquake);
 
-            roster.Add(charmander);
-            roster.Add(squirtle);
-            roster.Add(bulbasaur);
+            List<Move> blasMoves = new List<Move>();
+            Pokemon blastoise = new Pokemon("Blastoise", 50, 83, 100, 79, Elements.Water, blasMoves);
+            roster.Add(blastoise);
+            blasMoves.Add(surf);
+            blasMoves.Add(blizzard);
+            blasMoves.Add(earthquake);
+            blasMoves.Add(hydropump);
+
+            List<Move> venuMoves = new List<Move>();
+            Pokemon venusaur = new Pokemon("Venusaur", 50, 82, 83, 80, Elements.Grass, venuMoves);
+            roster.Add(venusaur);
+            venuMoves.Add(razorLeaf);
+            venuMoves.Add(hyperbeam);
+            venuMoves.Add(solarbeam);
+            venuMoves.Add(bodyslam);
+
+
+            List<Move> pikaMoves = new List<Move>();
+            Pokemon pikachu = new Pokemon("Pikachu", 50, 55, 30, 35, Elements.Electric, pikaMoves);
+            roster.Add(pikachu);
+            pikaMoves.Add(thunderbolt);
+            pikaMoves.Add(slam);
+            pikaMoves.Add(fly);
+            pikaMoves.Add(surf);
+
+
+            List<Move> gengMoves = new List<Move>();
+            Pokemon gengar = new Pokemon("Gengar", 50, 65, 60, 60, Elements.Ghost, gengMoves);
+            roster.Add(gengar);
+            gengMoves.Add(psychic);
+            gengMoves.Add(explosion);
+            gengMoves.Add(thunderbolt);
+            gengMoves.Add(lick);
+
+            List<Move> mew2Moves = new List<Move>();
+            Pokemon mewtwo = new Pokemon("Mewtwo", 99, 110, 90, 106, Elements.Psychic, mew2Moves);
+            roster.Add(mewtwo);
+            mew2Moves.Add(hyperbeam);
+            mew2Moves.Add(psychic);
+            mew2Moves.Add(blizzard);
+            mew2Moves.Add(thunderbolt);
+
+
+            
 
             Console.WriteLine("Welcome to Jacob Davis's world of Pokemon: Adventures in C#!");
 
@@ -133,7 +198,7 @@ namespace Pokemon
 
                                 //PRINT POSSIBLE MOVES
                                 Console.WriteLine();
-                                Console.WriteLine(player.Name + "'s HP is " + player.Hp + "\n" + enemy.Name + "'s HP is " + enemy.Hp);
+                                Console.WriteLine("Level " + player.Level + " " + player.Name + "'s HP is " + player.Hp + "\nLevel " + player.Level + " " + enemy.Name + "'s HP is " + enemy.Hp);
                                 
                                 int move = -1;
 
@@ -221,9 +286,10 @@ namespace Pokemon
 
                     case "heal":
                         //RESTORE ALL POKEMONS IN THE ROSTER
-                        charmander.Restore();
-                        squirtle.Restore();
-                        bulbasaur.Restore();
+                        for (int i = 0; i < roster.Count; i++)
+                        {
+                            roster[i].Restore();
+                        }
                         Console.Clear();
                         Console.WriteLine("All pokemons have been healed");
                         break;
